@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <script>
+
+      let a = 5;
+      let b = 6;
+
+      let res = a > b ? 'yes' : 'no';
+
+
+      // closed
+
+      function close() {
+         let bob = 0;
+
+         function plusBob() {
+            bob++;
+            return bob
+         }
+         function bobStr() {
+            bob += "";
+            return bob
+         }
+         function bobNum(params) {
+            bob = params;
+            return bob
+         }
+         return {
+            plus: plusBob,
+            str: bobStr,
+            num: bobNum
+         }
+      }
+      let result = close();
+      console.log(result);
+      console.log(result.plus());
+
+      // create class
+
+      let arr = [1, 5, 9, 42, 5, 4, 6, 2, 4, 5];
+      Array.prototype.serch = function (number) {
+         console.log(this.indexOf(number));
+      }
+      arr.serch(0);
+      let arr2 = ['fgfg', 25, 2, 5, true];
+      arr2.serch(2);
+
+
+      class Person {
+         constructor(name, surnem, age) {
+            this.name = name;
+            this.surnem = surnem;
+            this.age = age;
+         }
+         hello() {
+            console.log(`${this.name} hay`);
+         }
+      }
+      class Actor extends Person {
+         constructor(name, surnem, age, status) {
+            super(name, surnem, age);
+            this.status = status;
+         }
+         hello() {
+            super.hello();
+         }
+      }
+      let actorr = new Actor("Taras", "Lutsyk", 32, true)
+      let vira = new Person("Vira", "Lutsyk", 32);
+      actorr.hello();
+      console.log(actorr);
+      console.log(vira);
+
+      //function construktor
+
+      function Phone(name, model, age, color) {
+         this.name = name;
+         this.model = model;
+         this.age = age;
+         this.color = color;
+      }
+
+      let iphone = new Phone("Iphone", "XR", 3, "red");
+      Phone.prototype.getColor = function () {
+         console.log(this.color);
+      }
+      iphone.getColor();
+      console.log(iphone);
+
+      // try catch
+      // function er(a, b) {
+      //    if (a <= 0 && b <= 0) {
+      //       throw new Error("b or a cannot have properti 0 or less 0");
+      //    }
+      //    return a / b
+      // }
+
+      // let aa = +prompt();
+      // let bb = +prompt();
+
+      // try {
+      //    let result = er(aa, bb);
+      //    alert(result);
+      // } catch (error) {
+      //    alert(error);
+      // };
+      // console.log(2);
+// генерування соєї помилки throw new Error("fack you")
+
+// window nawigator
+// close
+//open
+// window.navigator.geolocation.getCurrentPosition(function (pozitin) {
+//    console.log(pozitin);
+// })
+// let promises = new Promise(function (resolve,reject) {
+//    setTimeout(() => {
+//       resolve ("gret");
+//       reject (new Error("error"))
+//    }, 500);
+// })
+// promises
+// .then(function(result){
+//    console.log(result);
+// })
+// .catch(function(err){
+//    console.log(err);
+// })
+
+function forward(){ 
+   return new Promise(function (resolve,reject) {
+   setTimeout(() => {
+     resolve ("forward");
+   }, 500);
+})}
+function left(){ 
+   return new Promise(function (resolve,reject) {
+   setTimeout(() => {
+     resolve ("left");
+   }, 500);
+})}
+function right(){ 
+   return new Promise(function (resolve,reject) {
+   setTimeout(() => {
+     resolve ("right");
+   }, 500);
+})}
+function toop(){ 
+   return new Promise(function (resolve,reject) {
+   setTimeout(() => {
+     resolve ("toop");
+   }, 500);
+})}
+
+// forward().then(function(res){
+//    console.log(res);
+//   return left();
+// })
+// .then(function(res){
+//    console.log(res);
+//    return right();
+// })
+// .then(function(res){
+//    console.log(res);
+//    return toop()
+// })
+// .then(function(res){
+//    console.log(res);
+// })
+// .catch(function(err){
+//    console.log(err);
+// })
+
+// let pop = Promise.all([forward(),left(),right(),toop()]);
+// console.log(pop);
+
+async function way() {
+   let a = await forward();
+   console.log(a);
+   let b = await right();
+   console.log(b);
+   let c = await left();
+   console.log(c);
+   let d = await toop();
+   console.log(d);
+   return "gooor"
+}
+way().then(function(res){
+   console.log(res);
+});
+   </script>
+</body>
+
+</html>
+
